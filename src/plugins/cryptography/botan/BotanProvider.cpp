@@ -7,7 +7,6 @@
 #include <QFileInfo>
 #include <QDir>
 #include <QStringBuilder>
-#include <QString>
 #include <string>
 #include <QHash>
 #include <stdexcept>
@@ -17,7 +16,7 @@ class Kryvo::BotanProviderPrivate {
   Q_DECLARE_PUBLIC(BotanProvider)
 
  public:
-  BotanProviderPrivate(BotanProvider* bp);
+  BotanProviderPrivate(BotanProvider* pro);
 
   void init(DispatcherState* ds);
 
@@ -58,7 +57,7 @@ class Kryvo::BotanProviderPrivate {
                    const QByteArray& keySaltByteArray,
                    const QByteArray& ivSaltByteArray);
 
-  bool executeCipher(std::size_t id, const Kryvo::CryptDirection direction,
+  bool executeCipher(std::size_t id, Kryvo::CryptDirection direction,
                      QFile* inFile, QSaveFile* outFile, Botan::Pipe* pipe);
 
   BotanProvider* const q_ptr{nullptr};
@@ -71,8 +70,8 @@ class Kryvo::BotanProviderPrivate {
   const std::size_t kPbkdfIterations{15000};
 };
 
-Kryvo::BotanProviderPrivate::BotanProviderPrivate(BotanProvider* bp)
-  : q_ptr(bp) {
+Kryvo::BotanProviderPrivate::BotanProviderPrivate(BotanProvider* pro)
+  : q_ptr(pro) {
 }
 
 void Kryvo::BotanProviderPrivate::init(DispatcherState* ds) {

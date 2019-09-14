@@ -36,8 +36,10 @@
   #endif
 #endif
 
+#include <QFileInfo>
 #include <QObject>
 #include <QString>
+#include <QByteArray>
 #include <memory>
 
 namespace Kryvo {
@@ -97,7 +99,6 @@ class BotanProvider : public QObject,
    * \param cipher String representing name of the cipher
    * \param keySize Key size in bits
    * \param modeOfOperation String representing mode of operation
-   * \param compress Boolean representing compression mode
    */
    bool encrypt(std::size_t id,
                 const QString& compressionFormat,
@@ -111,7 +112,7 @@ class BotanProvider : public QObject,
   /*!
    * \brief decrypt Decrypt a file. The algorithm is determined from
    * the file header.
-   * \param id
+   * \param id ID representing file to decrypt
    * \param passphrase String representing the user-entered passphrase
    * \param inputFileInfo File to decrypt
    * \param outputFileInfo Output file path

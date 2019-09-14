@@ -1,3 +1,3 @@
 TEMPLATE = subdirs
 CONFIG += ordered
-SUBDIRS = botan #openssl
+SUBDIRS = botan openssl
